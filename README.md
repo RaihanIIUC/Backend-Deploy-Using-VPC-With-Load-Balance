@@ -74,4 +74,57 @@ we showed how to filled it . the main difference of it with pubic ip ones is
 
 # Load Balance Setup 
 
+![vpc-public-ip-template](https://github.com/RaihanIIUC/backend-deploy-in-vpc-with-load-balance/assets/51045712/f3a6439d-b06d-475b-b0a9-d15654e53a54)
+
+we create a public ip available vm instance template so that we can make a load balance cloing the publically setted template.
+
+## Inside LoadBalance
+
+`cd /etc/nginx`
+`ls`
+`sudo nano nginx.conf` change this conf file as needed :
+
+
+`events {
+    # empty placeholder
+}
+
+
+http {
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://frontend;
+        }
+
+        location /api/ {
+            rewrite ^/api/(.*)$ /$1 break;
+            proxy_pass http://backend;
+        }
+    }
+
+    upstream frontend {
+        server client-service:80;
+    }
+
+    upstream backend {
+        server api-service:5000;
+        server api-service:5000;
+    }
+}`
+
+`location /api/ {
+            rewrite ^/api/(.*)$ /$1 break;
+            proxy_pass 10.10.0.2;
+}`
+
+`upstream backend {
+        server api-service:5000;
+        server api-service:5000;
+}` set two backend there so that whenever you have huge request it will auto transfer user to other one.
+
+### if lag / cache issue :
+`sudo nginx -s reload`
 
