@@ -34,3 +34,31 @@ we showed how to filled it . the main difference of it with pubic ip ones is
 `External ip : Network subnet tab `
 
 
+
+
+# Setup Backend in VM 
+
+### clone this project locally
+* `clone this project git clone address`
+* `cd backend-deploy-in-vpc-with-load-balance`
+* `go to : https://github.com/nodesource/distributions , take binary 16 version and install `
+* `node --version`
+* `sudo corepack enable` will enable yarn and other npm related corepack.
+* `yarn add nodemon`
+* `yarn run dev`
+
+
+### setup database 
+
+* `sudo apt update`
+* `sudo apt install default-mysql-server`
+* `sudo systemctl start mysql`
+* `sudo systemctl enable mysql`
+* `sudo mysql_secure_installation`
+* `mysql -u root -p`
+  if any issue with mysql :
+  `sudo mysqld_safe --skip-grant-tables &
+mysql -u root
+sudo systemctl stop mysql
+sudo systemctl start mysql`
+
