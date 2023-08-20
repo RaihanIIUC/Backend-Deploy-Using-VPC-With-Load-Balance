@@ -1,4 +1,3 @@
-![vm-private-ip-template-filled](https://github.com/RaihanIIUC/backend-deploy-in-vpc-with-load-balance/assets/51045712/597e634a-4074-4047-966a-fde5a9db576f)
 # VPC setup 
 
 we will start preparing our vpc by picture by picture :
