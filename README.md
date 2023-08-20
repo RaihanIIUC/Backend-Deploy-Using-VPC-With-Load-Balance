@@ -56,9 +56,22 @@ we showed how to filled it . the main difference of it with pubic ip ones is
 * `sudo systemctl enable mysql`
 * `sudo mysql_secure_installation`
 * `mysql -u root -p`
-  if any issue with mysql :
-  `sudo mysqld_safe --skip-grant-tables &
-mysql -u root
-sudo systemctl stop mysql
-sudo systemctl start mysql`
+
+#### if any issue with mysql :
+
+`sudo mysqld_safe --skip-grant-tables &`
+`mysql -u root`
+`sudo systemctl stop mysql`
+`sudo systemctl start mysql`
+
+### setup redis 
+* `sudo apt install redis`
+* `redis-cli --version`
+
+### test primsa database connection 
+
+
+
+# Load Balance Setup 
+
 
