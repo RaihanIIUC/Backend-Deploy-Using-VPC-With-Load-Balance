@@ -96,33 +96,34 @@ http {
         listen 80;
 
         location / {
-            proxy_pass http://frontend;
+            proxy_pass http://frontend-raihan;
         }
 
         location /api/ {
             rewrite ^/api/(.*)$ /$1 break;
-            proxy_pass http://backend;
+            proxy_pass http://backend-raihan;
         }
     }
 
-    upstream frontend {
-        server client-service:80;
+    upstream frontend-raihan {
+        server 11.10.10.12:80;
+        server 13.10.10.14:80;
     }
 
-    upstream backend {
-        server api-service:5000;
-        server api-service:5000;
+    upstream backend-raihan {
+        server 10.10.0.5:8000;
+        server 11.10.10.6:8080;
     }
 }`
 
 `location /api/ {
             rewrite ^/api/(.*)$ /$1 break;
-            proxy_pass 10.10.0.2;
+             proxy_pass http://backend-raihan;
 }`
 
-`upstream backend {
-        server api-service:5000;
-        server api-service:5000;
+`upstream backend-raihan {
+       server 10.10.0.5:8000;
+       server 11.10.10.6:8080;
 }` set two backend there so that whenever you have huge request it will auto transfer user to other one.
 
 ### if lag / cache issue :
